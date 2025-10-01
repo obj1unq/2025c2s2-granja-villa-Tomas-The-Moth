@@ -13,6 +13,10 @@ program farmville {
  	game.addVisualCharacter(personaje)
  	game.addVisual(new Maiz()) // Se agrega a modo de prueba
  	
+	keyboard.m().onPressDo({personaje.plantar(new Maiz())}) 
+	keyboard.o().onPressDo({personaje.plantar(new Tomaco())}) 
+	keyboard.t().onPressDo({personaje.plantar(new Trigo())}) 
+
  	//  COMIENZA
 	game.start()
 }
