@@ -33,8 +33,9 @@ object personaje {
 method cosechar() {
 	if (campo.posicionConCultivos(self)){
 		campo.cultivoEnPosicion(self.position()).serCosechado()
+
 		campo.sacarCultivo(campo.cultivoEnPosicion(self.position()))
-	     refugio.
+	     refugio.guardarCultivo(campo.cultivoEnPosicion(self.position()))
 		}
 		 else {
 			game.say(self, "lo unico que puede ser cosechado aqui es mi alma")

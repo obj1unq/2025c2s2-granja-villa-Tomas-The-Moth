@@ -1,5 +1,4 @@
-import jugador.*
-
+import personaje.*
 import wollok.game.*
 import cultivos.*
 program farmville {
@@ -17,6 +16,7 @@ program farmville {
 	keyboard.o().onPressDo({personaje.plantar(new Tomaco())}) 
 	keyboard.t().onPressDo({personaje.plantar(new Trigo())}) 
     keyboard.r().onPressDo({personaje.regar()})
+	keyboard.c().onPressDo({personaje.cosechar()})
  	//  COMIENZA
 	game.start()
 }

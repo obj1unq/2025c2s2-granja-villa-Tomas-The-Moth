@@ -41,7 +41,10 @@ class Maiz {
 	}
 
 	method serCosechado(){
-		estado.serCosechado()
+		if (estado.puedeCosecharse()){
+			game.removeVisual(self)
+		}
+		else{ game.say(self, "no daño a bebes, tengo moral")}
 	}
 }
 
@@ -100,21 +103,22 @@ class Trigo {
 // estados de edad de el maiz ---------------------------------------------- ----------------------------------------------------------------------------------------
 
 object baby  {
+	var planta = new Maiz()
   method siguienteAlRiego() {
   	return adult
   }
-  method serCosechado(){
-	return game.say(self, "No cosecho niños")
-  }
+ method puedeCosecharse(){
+	return false
+ }
 
 }
 
 object adult  {
+	
 	method siguienteAlRiego(){
 		return self
 	}
-
-	method serCosechado(){
-		return game.removeVisual(self)
-	}
+ method puedeCosecharse(){
+	return true
+ }
 }

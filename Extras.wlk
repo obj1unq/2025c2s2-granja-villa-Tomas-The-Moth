@@ -4,7 +4,7 @@ object granero {
 const property cultivosGuardados = []
 
 
-method GuardarCultivo (cultivo) {
+method guardarCultivo (cultivo) {
     cultivosGuardados.add(cultivo)
 }
 
