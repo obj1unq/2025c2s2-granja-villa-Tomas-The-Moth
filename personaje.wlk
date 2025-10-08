@@ -6,6 +6,7 @@ object personaje {
 	var campo  = cultivos
 	var refugio = granero
 	var property position = game.center()
+	var dinero = 0
 	const property image = "fplayer.png"
 
 	method plantar(cultivo) {
@@ -40,5 +41,9 @@ method cosechar() {
 		 else {
 			game.say(self, "lo unico que puede ser cosechado aqui es mi alma")
 	}
+ }
+
+ method venderCosechas(){
+	dinero = refugio.cultivosGuardados().forEach(closure)
  }
 }

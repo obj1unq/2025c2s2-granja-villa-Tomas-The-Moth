@@ -46,7 +46,11 @@ class Maiz {
 		}
 		else{ game.say(self, "no daño a bebes, tengo moral")}
 	}
+		method valor(){
+		return 150
+	}
 }
+
 
 class Tomaco {
 	var property position = game.at(2, 2)
@@ -72,6 +76,10 @@ class Tomaco {
 
 	method serCosechado(){
 		game.removeVisual(self)
+	}
+
+	method valor(){
+		return 80
 	}
 }
 
@@ -99,6 +107,8 @@ class Trigo {
      game.say(self, "El trigo no parece maduro todavia, sigue peleando con gente en internet")
 	}
    }
+   	method valor(){
+		return (estado - 1) * 100
 }
 // estados de edad de el maiz ---------------------------------------------- ----------------------------------------------------------------------------------------
 
