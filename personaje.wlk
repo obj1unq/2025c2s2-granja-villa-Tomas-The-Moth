@@ -44,6 +44,8 @@ method cosechar() {
  }
 
  method venderCosechas(){
-	dinero = refugio.cultivosGuardados().forEach(closure)
- }
+	dinero = dinero + refugio.precioDeCosecha()
+    refugio.venderCosechas()
 }
+}
+

@@ -110,9 +110,10 @@ class Trigo {
    	method valor(){
 		return (estado - 1) * 100
 }
+}
 // estados de edad de el maiz ---------------------------------------------- ----------------------------------------------------------------------------------------
 
-object baby  {
+object baby {
 	var planta = new Maiz()
   method siguienteAlRiego() {
   	return adult
