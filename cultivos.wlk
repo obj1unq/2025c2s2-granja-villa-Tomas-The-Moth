@@ -2,15 +2,17 @@ import wollok.game.*
 import Extras.*
 
 // campo --------------------------------------------------------------------------------------------------------------------------------------------------------
-object cultivos {
-	const cultivosPlantados = []
+object campoDecultivos {
+	const property cultivosPlantados = []
+    const property mercadosAca = []
 
 
- method posicionConCultivos(cosa){
+
+ method posicionConCultivos(cosa){ //indica si la posicion de una COSA tiene cultivos
 	 return  cultivosPlantados.map({cultivo => cultivo.position()}).contains(cosa.position())
 	}
 
-method posicionSinCultivos(cosa){
+method posicionSinCultivos(cosa){ // indica si la posicion de una COSA No tiene cultivos, hecho para mayor comodida
 	 return  !self.posicionConCultivos(cosa)
 	}
 
@@ -20,12 +22,28 @@ method cultivoEnPosicion(posicion){
    
 }
 
+method EstaPosicionTieneCultivos(posDada){ //indica si la POSICION dada tiene cultivos
+ return  cultivosPlantados.map({cultivo => cultivo.position()}).contains(posDada)
+}
+
 method nuevoCultivo(cultivo){
 	cultivosPlantados.add(cultivo)
 }
 
 method sacarCultivo(cultivo){
 	cultivosPlantados.remove(cultivo)
+}
+
+method añadirMercado (mercadoAñadido){
+	mercadosAca.add(mercadoAñadido)
+	game.addVisual(mercadoAñadido)
+}
+
+method regarEnPosicionSiHay(posicion){
+	if(self.EstaPosicionTieneCultivos(posicion)){
+	  self.cultivoEnPosicion(posicion).serRegado()
+	}
+
 }
 }
 
@@ -54,7 +72,7 @@ class Maiz {
 
 class Tomaco {
 	var property position = game.at(2, 2)
-	var campo = cultivos
+
 
 	method image() {
 		return "tomaco.png"
@@ -114,7 +132,6 @@ class Trigo {
 // estados de edad de el maiz ---------------------------------------------- ----------------------------------------------------------------------------------------
 
 object baby {
-	var planta = new Maiz()
   method siguienteAlRiego() {
   	return adult
   }

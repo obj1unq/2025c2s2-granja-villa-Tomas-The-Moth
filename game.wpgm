@@ -1,6 +1,7 @@
 import personaje.*
 import wollok.game.*
 import cultivos.*
+import Extras.*
 program farmville {
 	//  CONFIG	
 	game.title("La granja")
@@ -10,13 +11,20 @@ program farmville {
 
 	//  VISUALES
  	game.addVisualCharacter(personaje)
- 	game.addVisual(new Maiz()) // Se agrega a modo de prueba
+	campoDecultivos.añadirMercado(new Mercado(position = game.at(1, 9)))
+	campoDecultivos.añadirMercado(new Mercado(position = game.at(9, 9)))
+  // Se agrega a modo de prueba
  	
 	keyboard.m().onPressDo({personaje.plantar(new Maiz())}) 
 	keyboard.o().onPressDo({personaje.plantar(new Tomaco())}) 
 	keyboard.t().onPressDo({personaje.plantar(new Trigo())}) 
     keyboard.r().onPressDo({personaje.regar()})
 	keyboard.c().onPressDo({personaje.cosechar()})
+	keyboard.space().onPressDo({personaje.decirDineroYMercaderia()})
+	keyboard.a().onPressDo({personaje.ponerAspersor()})
+	keyboard.v().onPressDo({personaje.venderCosechas()})
+	game.onTick(1000, "AspersoresRiegan", {aspersorFactory.regarTodos()})
+
  	//  COMIENZA
 	game.start()
 }
